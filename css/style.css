@@ -1,1 +1,48 @@
-body {}
+main {
+    max-width: 70rem;
+    margin: 5rem auto;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 0.5em;
+    margin-top: 0.5em;
+}
+
+
+.gallery img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 40%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.nav-button {
+    display: flex;
+    gap: 0.5em;
+}
+
+.previous {
+    flex: 1;
+}
+
+.next {
+    flex: 1;
+}
+
+button {
+    padding: 0.5em;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    background: linear-gradient(180deg, #4b91f7 0%, #367af6 100%);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background: #ccc
+}
