@@ -20,10 +20,14 @@ const loadApi = async () => {
     { name: "next", disabled: true },
   ];
   toggleButtons(inactivateButtonState);
-
+  // hide fault when start API call
+  const fault = document.querySelector("#fault");
+  fault.classList.add("hide");
+  // show loader
   const loading = document.querySelector("#loading");
   loading.classList.remove("hide");
 
+  // add api key
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("x-api-key", apiKey);
@@ -41,22 +45,36 @@ const loadApi = async () => {
       requestOptions
     );
     const cats = await result.json();
-    // active buttons again
-    const buttonState = [{ name: "next", disabled: false }];
-    if (page === 0) {
-      buttonState.push({ name: "previous", disabled: true });
-    } else {
-      buttonState.push({ name: "previous", disabled: false });
-    }
-    toggleButtons(buttonState);
+
+    updateBtn();
 
     //hide loader
     loading.classList.add("hide");
 
     drawImages(cats);
-  } catch (error) {
-    // we have error with api
+  } catch (err) {
+    // we have error with api or no internet
+
+    // show error
+    fault.classList.remove("hide");
+    //hide loader
+    loading.classList.add("hide");
+    updateBtn();
+    const gallery = document.querySelector(".gallery");
+    // empty old images
+    gallery.innerHTML = "";
   }
+};
+
+const updateBtn = () => {
+  // active buttons again
+  const buttonState = [{ name: "next", disabled: false }];
+  if (page === 0) {
+    buttonState.push({ name: "previous", disabled: true });
+  } else {
+    buttonState.push({ name: "previous", disabled: false });
+  }
+  toggleButtons(buttonState);
 };
 
 const drawImages = (cats) => {
