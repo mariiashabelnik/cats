@@ -21,6 +21,9 @@ const loadApi = async () => {
   ];
   toggleButtons(inactivateButtonState);
 
+  const loading = document.querySelector("#loading");
+  loading.classList.remove("hide");
+
   const myHeaders = new Headers();
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append("x-api-key", apiKey);
@@ -46,6 +49,10 @@ const loadApi = async () => {
       buttonState.push({ name: "previous", disabled: false });
     }
     toggleButtons(buttonState);
+
+    //hide loader
+    loading.classList.add("hide");
+
     drawImages(cats);
   } catch (error) {
     // we have error with api
