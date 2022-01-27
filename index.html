@@ -7,6 +7,11 @@
     <title>Cats</title>
     <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <main>
@@ -15,15 +20,18 @@
       </section>
       <section class="nav-button">
         <button class="previous">Previous</button>
+        <div class="pageText">Showing page <span id="pageNum"></span></div>
         <button class="next">Next</button>
       </section>
       <div id="loading" class="hide">
-        <img src="img/spinner.svg" alt="Loading" />
+        <div>
+          <img src="img/blocks.svg" alt="Loading" />
+        </div>
       </div>
       <div id="fault" class="hide">
         Something went wrong while fetching data from the server
       </div>
-      <section>Showing page <span id="pageNum"></span></section>
+
       <section class="gallery"></section>
     </main>
   </body>
