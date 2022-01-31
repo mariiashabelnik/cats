@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Cats</title>
+    <link rel="icon" href="cat-icon.ico" type="image/x-icon" />
     <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -15,21 +17,25 @@
   </head>
   <body>
     <main>
-      <section>
+      <!-- Top header -->
+      <section class="grid">
+        <div class="logo">
+          <img src="img/cat-logo.svg" alt="logo" />
+        </div>
         <h1>Cat images</h1>
       </section>
-      <section class="nav-button">
-        <button class="previous">Previous</button>
-        <div class="pageText">Showing page <span id="pageNum"></span></div>
-        <button class="next">Next</button>
-      </section>
-      <div id="loading" class="hide">
-        <div>
-          <img src="img/blocks.svg" alt="Loading" />
-        </div>
-      </div>
       <div id="fault" class="hide">
         Something went wrong while fetching data from the server
+      </div>
+      <section class="nav-button">
+        <button class="previous flickrButton">&lt;&lt; Prev</button>
+
+        <div class="pageText">Page <span id="pageNum"></span></div>
+        <button class="next flickrButton">Next &gt;&gt;</button>
+      </section>
+
+      <div id="loading" class="loading hide">
+        <img src="img/blocks.svg" alt="Loading" />
       </div>
 
       <section class="gallery"></section>

@@ -1,8 +1,11 @@
+:root {
+    --border-size: 0.5em;
+
+}
+
+
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
     background-color: #fff700;
     font-family: 'Bebas Neue', cursive;
 
@@ -13,9 +16,31 @@ main {
     margin: 5rem auto;
 }
 
+.grid {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3em;
+    flex: 15;
+}
+
+.logo {
+    flex: 1;
+    justify-content: center;
+
+}
+
+.logo img {
+    height: 3em;
+
+}
+
 .pageText {
     font-size: 2em;
     line-height: 3em;
+
 
 }
 
@@ -23,17 +48,17 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
     gap: 0.5em;
-    margin-top: 0.5em;
+    margin-top: 2em;
 }
 
 
 .gallery img {
-    width: 100%;
+    width: calc(100% - (var(--border-size) * 2));
     height: auto;
     aspect-ratio: 4/3;
     object-fit: cover;
     object-position: center;
-    border: 8px ridge #00eeff;
+    border: var(--border-size) groove #00eeff;
 }
 
 .nav-button {
@@ -44,30 +69,40 @@ main {
 .previous {
     flex: 1;
     margin-right: 2em;
+    box-shadow: 25px 10px 0px #21a0ab;
+    background: linear-gradient(135deg, transparent 5%, #FF013C 5%);
 }
 
 .next {
     flex: 1;
     margin-left: 2em;
+    box-shadow: -25px 10px 0px #21a0ab;
+    background: linear-gradient(315deg, transparent 5%, #FF013C 5%);
 }
 
-button,
-button::after {
-    width: 388px;
+
+.flickrButton img {
+    height: 2em;
+    position: absolute;
+    top: 0.4em;
+}
+
+.flickrButton,
+.flickrButton::after {
+    cursor: pointer;
+
     height: 3em;
     font-size: 2em;
     font-family: 'Bebas Neue', cursive;
-    background: linear-gradient(45deg, transparent 5%, #FF013C 5%);
     border: 0;
     color: #fff;
     letter-spacing: 3px;
     line-height: 3em;
-    box-shadow: 6px 0px 0px #00E6F6;
     outline: transparent;
     position: relative;
 }
 
-button::after {
+.flickrButton::after {
     --slice-0: inset(50% 50% 50% 50%);
     --slice-1: inset(80% -6px 0 0);
     --slice-2: inset(50% -6px 30% 0);
@@ -83,7 +118,7 @@ button::after {
     right: 0;
     bottom: 0;
     background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #FF013C 5%);
-    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
+    text-shadow: -5px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
     clip-path: var(--slice-0);
 }
 
@@ -92,12 +127,13 @@ button::after {
 }
 
 .previous::after {
-    content: 'PREVOUS';
+    content: 'PREV';
 }
 
-button:hover::after {
+.flickrButton:hover::after {
     animation: 1s glitch;
     animation-timing-function: steps(2, end);
+    animation-iteration-count: infinite;
 }
 
 @keyframes glitch {
@@ -166,8 +202,7 @@ button:disabled {
     display: none !important
 }
 
-
-#loading {
+.loading {
     z-index: 10;
     position: absolute;
     left: 0;
@@ -178,11 +213,80 @@ button:disabled {
     background-color: rgba(0, 0, 0, 0.651);
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 #loading img {
     display: block;
     height: 3em;
+    margin-top: 5em;
+
+
+}
+
+
+
+
+
+@media only screen and (max-width: 850px) {
+
+
+    .nav-button {
+        display: flex;
+        flex-direction: row;
+        gap: 0;
+    }
+
+    .next {
+        margin-left: 0;
+        flex: 1;
+        align-items: flex-end;
+    }
+
+    .previous {
+        margin-right: 0;
+        flex: 1;
+        align-items: flex-start;
+    }
+
+    .flickrButton {
+        line-height: 2em;
+        font-size: 1.3em;
+        width: 100%;
+        letter-spacing: 1px;
+        position: static;
+    }
+
+    .pageText {
+        line-height: inherit;
+        margin: 0.5em;
+    }
+
+    .flickrButton:hover::after {
+        animation: none
+    }
+
+    main {
+        margin: 0;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+        flex: 5;
+    }
+
+    .previous {
+        flex: 1;
+        box-shadow: 5px 3px 0px #21a0ab;
+        background: linear-gradient(135deg, transparent 5%, #FF013C 5%);
+    }
+
+    .next {
+        flex: 1;
+        box-shadow: -5px 3px 0px #21a0ab;
+        background: linear-gradient(315deg, transparent 5%, #FF013C 5%);
+    }
+
+
 
 }

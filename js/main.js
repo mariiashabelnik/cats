@@ -1,4 +1,5 @@
 let page = 0;
+
 const apiKey = "65deb3b4-e14f-46c6-b7c8-b703f8ee06c9";
 
 const toggleButtons = (buttonStates) => {
