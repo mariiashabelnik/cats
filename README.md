@@ -16,4 +16,6 @@ run `npm run start`
 
 run `npm run build`
 
+## Link to website
+
 [View page here](https://img-with-cats.netlify.app)
