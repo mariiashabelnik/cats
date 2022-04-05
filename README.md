@@ -1,4 +1,4 @@
-# CATS
+# CATS.
 
 Test to dowload cat images from api
 
